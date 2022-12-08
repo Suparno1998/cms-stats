@@ -41,7 +41,7 @@ def getAverageGoals():
                 total_goals += match["Home Team Goals"] + match["Away Team Goals"]
         total_matches = matches.shape[0]
         average_goals[int(year)] = round((total_goals/total_matches),2)
-    return average_goals
+    return [{"Year" : k, "goals" : v} for k,v in average_goals.items()]
 
 def number_of_worldcups():
     worldcups = {}
