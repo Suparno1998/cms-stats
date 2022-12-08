@@ -72,7 +72,7 @@ def popularMatchesByTeam(country):
     matches = data[(data["Away Team Name"] == country) | (data["Home Team Name"] == country)]
     match_data = matches.groupby("Year").sum("Attendance")
     attendance = match_data[["Attendance"]].to_dict()
-    result_dict = [ {"year" : int(k), "people" : int(v)}for k,v in attendance["Attendance"].items()]
+    result_dict = [ {"Year" : int(k), "people" : int(v)}for k,v in attendance["Attendance"].items()]
     return result_dict
 
 popularMatchesByTeam("Germany")
