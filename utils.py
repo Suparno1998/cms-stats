@@ -68,6 +68,12 @@ def number_of_worldcups():
     winners = [{"country" : k, "cups" : v} for k,v in worldcups.items()]
     print(winners)
     return winners
+def goalsScorePerWorldCup():
+    result = data_2[["Year","GoalsScored"]]
+    print(result)
+    result_dict = [{"Year" : int(val["Year"]), "goals" : int(val["GoalsScored"])} for indx, val in result.iterrows()]
+    return result_dict
+
 def attendanceInWorldCups():
     result = data_2[["Year","Attendance"]]
     print(result)
