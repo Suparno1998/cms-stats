@@ -1,6 +1,6 @@
 from flask import Flask,jsonify,request
 from flask_cors import CORS
-from utils import number_of_worldcups,getAverageGoals,popularMatchesByTeam,getHeadToHeadMatches
+from utils import number_of_worldcups,getAverageGoals,popularMatchesByTeam,getHeadToHeadMatches,attendanceInWorldCups
 app = Flask(__name__)
 CORS(app)
 
@@ -26,5 +26,8 @@ def columnchart():
     print(request.args.get("country"))
     return popularMatchesByTeam(request.args.get("country"))
 
+@app.route("/getbarchart2")
+def barchart2():
+    return jsonify(attendanceInWorldCups())
 if __name__ == "main":
     app.run(debug=True)

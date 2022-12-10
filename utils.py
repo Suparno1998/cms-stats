@@ -1,6 +1,7 @@
 import pandas as pd
 
 data : pd.DataFrame = pd.read_csv("./WorldCupMatches.csv")
+data_2 : pd.DataFrame = pd.read_csv("./WorldCups.csv")
 data.drop(range(850,4568), inplace=True)
 print(data.shape)
 
@@ -67,6 +68,11 @@ def number_of_worldcups():
     winners = [{"country" : k, "cups" : v} for k,v in worldcups.items()]
     print(winners)
     return winners
+def attendanceInWorldCups():
+    result = data_2[["Year","Attendance"]]
+    print(result)
+    result_dict = [{"Year" : int(val["Year"]), "people" : int(val["Attendance"])} for indx, val in result.iterrows()]
+    return result_dict
 
 def popularMatchesByTeam(country):
     matches = data[(data["Away Team Name"] == country) | (data["Home Team Name"] == country)]
@@ -75,4 +81,5 @@ def popularMatchesByTeam(country):
     result_dict = [ {"Year" : int(k), "people" : int(v)}for k,v in attendance["Attendance"].items()]
     return result_dict
 
-popularMatchesByTeam("Germany")
+#opularMatchesByTeam("Germany")
+#attendanceInWorldCups()
